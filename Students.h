@@ -34,6 +34,9 @@ class Student {
     string getDepartment() ;
 
     void print();
+    
+    bool checkDepartment(string dep);
+
 
 
 };

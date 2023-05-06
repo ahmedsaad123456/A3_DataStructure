@@ -10,6 +10,7 @@ class MaxHeap {
 
 
     public:
+    MaxHeap();
         
         
 };

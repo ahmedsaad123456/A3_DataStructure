@@ -9,10 +9,11 @@ int main(){
     double gpa;
     string name ,dep;
     int chosen =0;
-    // MinHeap minH; create object of MinHeap
-    // MaxHeap maxH;  create object of MaxHeap
-    // BST b;   create object of BST
-    // AVL avl; create object of AVL
+    Student s;
+    // MinHeap //minH; create object of MinHeap
+    // MaxHeap //maxH;  create object of MaxHeap
+    // BST b;   //create object of BST
+    AVL avl; //create object of AVL
 
     while(chosen!=5){
         
@@ -50,7 +51,7 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // b.insert(Student(id , gpa , name , dep));
+                    // b.insert(Student(id , gpa , dep , name));
                     cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
 
@@ -94,22 +95,61 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // avl.insert(Student(id , gpa , name , dep)); 
-                    cout<<"The student is added"<<endl;
-                    cout<<"--------------------------------------"<<endl;
+                    if(!s.checkDepartment(dep)){
+                        cout<<"please enter department from the following:"<<endl;
+                        cout<<"CS , IS , DS , IT"<<endl;
+                        cout<<"--------------------------------------"<<endl;
+
+                    }
+                    else{
+                        if(!avl.search(id)){
+                        avl.insert(Student(id , gpa , dep , name)); 
+                        cout<<"The student is added"<<endl;
+                        cout<<"--------------------------------------"<<endl;
+                        }
+
+                    }
+                    
+                    
 
                 }
                 else if(AVLchosen==2){
-                    // remove student
+                    cout<<"enter Student ID: "<<endl;
+                    cin>>id;
+                    if(!avl.search(id))
+                    {
+                        cout<<"Student is not found"<<endl;
+                        cout<<"--------------------------------------"<<endl;
+
+                    }
+                    else{
+                        avl.erase(id);
+                        cout<<"Student is deleted"<<endl;
+                        cout<<"--------------------------------------"<<endl;
+
+                    }
+
                 }
                 else if(AVLchosen==3){
-                    // search student
+                    cout<<"enter Student ID: "<<endl;
+                    cin>>id;
+                    if(!avl.search(id)){
+                        cout<<"Student is not found"<<endl;
+                        cout<<"--------------------------------------"<<endl;
+
+                    }
+                    cout<<"--------------------------------------"<<endl;
+
                 }
                 else if (AVLchosen==4){
-                    // print all
+                    avl.inorder(avl.getRoot());
+                    cout<<"--------------------------------------"<<endl;
+
                 }
                 else if (AVLchosen!=5){
                     cout<<"please enter valid number from menu"<<endl;
+                    cout<<"--------------------------------------"<<endl;
+
 
                 }
 
@@ -137,7 +177,7 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // minH.insert(Student(id , gpa, name ,dep));
+                    // minH.insert(Student(id , gpa, dep , name));
                     cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
 
@@ -178,7 +218,7 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // maxH.insert(Student(id , gpa, name ,dep));
+                    // maxH.insert(Student(id , gpa, dep , name));
                     cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
                 }
