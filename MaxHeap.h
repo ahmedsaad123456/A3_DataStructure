@@ -15,9 +15,9 @@ public:
 
     void Add( Student s);
 
-    void heapify(vector<Student>& vec, int n, int i);
+    void heapify(vector<Student>& studentsVec, int n, int i);
 
-    vector<Student>& Sort(vector<Student>& stVec);
+    vector<Student>& Sort(vector<Student>& studentsVec);
 
     void print();
         
