@@ -5,6 +5,7 @@
 
 
 int main(){
+
     int id;
     double gpa;
     string name ,dep;
@@ -158,6 +159,7 @@ int main(){
         }
         else if(chosen==3){
             int MinHeapChosen=0;
+            MinHeap minH;
             while(MinHeapChosen!=3){
                 cout<<"Choose one of the following options"<<endl;
                 cout<<"1. Add student"<<endl;
@@ -177,14 +179,14 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // minH.insert(Student(id , gpa, dep , name));
+                    minH.Add(Student(id , gpa, dep , name));
                     cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
 
                 }
 
                 else if (MinHeapChosen==2){
-                    // minH.print();
+                    minH.print();
                     cout<<"--------------------------------------"<<endl;
 
                 }
@@ -198,6 +200,7 @@ int main(){
         }
         else if (chosen==4){
             int MaxHeapChosen=0;
+            MaxHeap maxH;
             while(MaxHeapChosen!=3){
                 cout<<"Choose one of the following options"<<endl;
                 cout<<"1. Add student"<<endl;
@@ -218,13 +221,13 @@ int main(){
                     cin>>gpa;
                     cout<<"Department : "<<endl;
                     cin>>dep;
-                    // maxH.insert(Student(id , gpa, dep , name));
+                     maxH.Add(Student(id , gpa, dep , name));
                     cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
                 }
 
                 else if (MaxHeapChosen==2){
-                    // maxH.print();
+                     maxH.print();
                     cout<<"--------------------------------------"<<endl;
 
                 }
@@ -240,10 +243,6 @@ int main(){
             cout<<"please enter valid number from menu"<<endl;
         }
     }
-
-
-
-
    
 
 }
