@@ -1,10 +1,9 @@
 #include "MaxHeap.h"
 
 
-vector<Student> MaxHeap:: ReadFromFile(string filename ){
-    fstream datafile;
+void MaxHeap:: ReadFromFile(string filename ){
+        fstream datafile;
         string line;
-        vector<Student> vec;
         int counter = 1;
         Student s;
         
@@ -25,7 +24,7 @@ vector<Student> MaxHeap:: ReadFromFile(string filename ){
             else {
                 s.setDepartment(line);
                 counter = 0;
-                vec.push_back(s);
+                Add(s);
             }
 
             counter++;
@@ -33,13 +32,12 @@ vector<Student> MaxHeap:: ReadFromFile(string filename ){
         }
 
         datafile.close();
-        return vec;
 }
 
 //--------------------------------------------------------------------------
 
 MaxHeap::MaxHeap(){
-    this->studentsVec = ReadFromFile("students.txt");
+    this->ReadFromFile("students.txt");
 }
 
 //--------------------------------------------------------------------------
