@@ -6,7 +6,7 @@
 
 class MaxHeap {
 
-    vector<Student> ReadFromFile(string filename );
+    void ReadFromFile(string filename );
     vector<Student> studentsVec;
     
 public:
