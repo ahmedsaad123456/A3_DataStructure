@@ -189,7 +189,6 @@ int main(){
         }
         else if(chosen==3){
             int MinHeapChosen=0;
-            MinHeap minH;
             while(MinHeapChosen!=3){
                 cout<<"Choose one of the following options"<<endl;
                 cout<<"1. Add student"<<endl;
@@ -230,7 +229,6 @@ int main(){
         }
         else if (chosen==4){
             int MaxHeapChosen=0;
-            MaxHeap maxH;
             while(MaxHeapChosen!=3){
                 cout<<"Choose one of the following options"<<endl;
                 cout<<"1. Add student"<<endl;
