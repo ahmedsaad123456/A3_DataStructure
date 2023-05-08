@@ -1,6 +1,6 @@
 #include "MinHeap.h"
 
-vector<Student> MinHeap:: ReadFromFile(string filename ){
+vector<Student> MinHeap::ReadFromFile(string filename ){
     
         fstream datafile;
         string line;
@@ -94,8 +94,11 @@ vector<Student>& MinHeap::Sort(vector<Student>& stVec){
 
 
 void MinHeap::print(){
-    for(int i = 0; i < studentsVec.size(); i++){
-        cout<<studentsVec[i].getID()<<" "<<studentsVec[i].getName()<<" "<<studentsVec[i].getGPA()<<" "<<studentsVec[i].getDepartment()<<'\n';
+    cout<<"Print "+to_string(studentsVec.size())+" students"<<'\n';
+    studentsVec = Sort(studentsVec);
+    
+    for(int i = studentsVec.size() -1 ; i >= 0 ; i--){
+        studentsVec[i].print();
     }
 }
 

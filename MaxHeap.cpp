@@ -1,6 +1,5 @@
 #include "MaxHeap.h"
 
-#include "Students.cpp"
 
 vector<Student> MaxHeap:: ReadFromFile(string filename ){
     fstream datafile;

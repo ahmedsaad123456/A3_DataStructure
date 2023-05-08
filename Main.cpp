@@ -209,7 +209,6 @@ int main(){
                     cout<<"Department : "<<endl;
                     cin>>dep;
                     minH.Add(Student(id , gpa, dep , name));
-                    cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
 
                 }
@@ -250,7 +249,6 @@ int main(){
                     cout<<"Department : "<<endl;
                     cin>>dep;
                      maxH.Add(Student(id , gpa, dep , name));
-                    cout<<"The student is added"<<endl;
                     cout<<"--------------------------------------"<<endl;
                 }
 
