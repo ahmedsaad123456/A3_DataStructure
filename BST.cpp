@@ -96,13 +96,14 @@ Node* BST::deleteNode(Node* curr, int id){
             delete temp;
         }
         else{ //if two child
-            Node* temp = minNode(curr); //find the successor of this node
+            Node* temp = minNode(curr->right); //find the successor of this node in the right subtree
             curr->student = temp->student;
             curr->right = deleteNode(curr->right, temp->student.getID());
         }
     }
     return curr;
 }
+
 
 void BST::removeStudent(int id){
     root = deleteNode(root, id);
