@@ -37,6 +37,10 @@ class Student {
     
     bool checkDepartment(string dep);
 
+    bool checkGPA(double gpa);
+
+    bool checkID(int id);
+
 
 
 };

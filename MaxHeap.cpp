@@ -54,12 +54,11 @@ void MaxHeap:: Add( Student s){
         index = ( index - 1 ) / 2;
     }
 
-    cout<<"The Student is added"<<'\n';
 }
 
 //--------------------------------------------------------------------------
 
-void MaxHeap :: heapify(vector<Student>& studentsVec, int n, int i){
+void MaxHeap :: heapify( int n, int i){
      
      int largest = i;
         int l = 2 * i + 1;
@@ -75,33 +74,32 @@ void MaxHeap :: heapify(vector<Student>& studentsVec, int n, int i){
         
         if(largest != i){
             swap(studentsVec[i], studentsVec[largest]);
-            heapify(studentsVec, n, largest);
+            heapify(n, largest);
         }
 
 }
 
 //--------------------------------------------------------------------------
 
-vector<Student>& MaxHeap::Sort(vector<Student>& studentsVec){
+void MaxHeap::Sort(){
 
     int n = studentsVec.size();
     for(int i =(n - 1) / 2; i >= 0; i--){
-        heapify(studentsVec, n, i);
+        heapify(n, i);
     }
     
     for(int i = n - 1; i >= 0; i--){
         swap(studentsVec[0], studentsVec[i]);
-        heapify(studentsVec, i, 0);
+        heapify(i, 0);
     }
     
-    return studentsVec;
 }
 
 //--------------------------------------------------------------------------
 
 void MaxHeap:: print(){
     cout<<"Print "+to_string(studentsVec.size())+" students"<<'\n';
-    studentsVec = Sort(studentsVec);
+    Sort();
     
     for(int i = studentsVec.size() -1 ; i >= 0 ; i--){
         studentsVec[i].print();

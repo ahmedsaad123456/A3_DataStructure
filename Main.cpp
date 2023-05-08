@@ -46,25 +46,47 @@ int main(){
                     cout << "id : " << endl;
                     cin >> id;
                     cin.ignore();
-                    cout << "Name : " << endl;
-                    getline(cin, name);
-                    cout << "GPA : " << endl;
-                    cin >> gpa;
-                    cout << "Department : " << endl;
-                    cin >> dep;
-                    if(!s.checkDepartment(dep)){
-                        cout << "please enter department from the following:" << endl;
-                        cout << "CS , IS , DS , IT" << endl;
+                    if(s.checkID(id)){
+                        if(!b.searchStudent(id)){
+                            cout << "Name : " << endl;
+                            getline(cin, name);
+                            cout << "GPA : " << endl;
+                            cin >> gpa;
+                            if(s.checkGPA(gpa)){
+                                cout << "Department : " << endl;
+                                cin >> dep;
+                                if(!s.checkDepartment(dep)){
+                                    cout<<"--------------------------------------"<<endl;
+                                    cout << "please enter department from the following in capital only:" << endl;
+                                    cout << "CS , IS , DS , IT" << endl;
+                                    cout << "--------------------------------------" << endl;
+
+                                }
+                                else {
+                                    b.addStudent(Student(id, gpa, dep, name));
+                                    cout << "The student is added" << endl;
+                                    cout << "--------------------------------------" << endl;
+                                    
+                                }
+                            }
+                            else{
+                                cout << "--------------------------------------" << endl;
+                                cout << "Please enter gpa from 0 to 4 "<<endl;
+                                cout << "--------------------------------------" << endl;
+
+                            }
+                            
+                        }
+
+                    }
+                    else{
+                        cout << "--------------------------------------" << endl;
+                        cout << "Please enter id from 1 to 100" << endl;
                         cout << "--------------------------------------" << endl;
 
                     }
-                    else {
-                        if(!b.searchStudent(id)) {
-                            b.addStudent(Student(id, gpa, dep, name));
-                            cout << "The student is added" << endl;
-                            cout << "--------------------------------------" << endl;
-                        }
-                    }
+                    
+                    
                 }
                 else if(BSTchosen == 2){
                     cout << "Enter student ID: " << endl;
@@ -117,30 +139,48 @@ int main(){
                 cin>>AVLchosen;
 
                 if(AVLchosen==1){
-                    cout<<"id : "<<endl;
-                    cin>>id;
+                    cout << "id : " << endl;
+                    cin >> id;
                     cin.ignore();
-                    cout<<"Name : "<<endl;
-                    getline(cin, name);
-                    cout<<"GPA : "<<endl;
-                    cin>>gpa;
-                    cout<<"Department : "<<endl;
-                    cin>>dep;
-                    if(!s.checkDepartment(dep)){
-                        cout<<"please enter department from the following:"<<endl;
-                        cout<<"CS , IS , DS , IT"<<endl;
-                        cout<<"--------------------------------------"<<endl;
-
-                    }
-                    else{
+                    if(s.checkID(id)){
                         if(!avl.search(id)){
-                        avl.insert(Student(id , gpa , dep , name)); 
-                        cout<<"The student is added"<<endl;
-                        cout<<"--------------------------------------"<<endl;
+                            cout << "Name : " << endl;
+                            getline(cin, name);
+                            cout << "GPA : " << endl;
+                            cin >> gpa;
+                            if(s.checkGPA(gpa)){
+                                cout << "Department : " << endl;
+                                cin >> dep;
+                                if(!s.checkDepartment(dep)){
+                                    cout<<"--------------------------------------"<<endl;
+                                    cout << "please enter department from the following in capital only:" << endl;
+                                    cout << "CS , IS , DS , IT" << endl;
+                                    cout << "--------------------------------------" << endl;
+
+                                }
+                                else {
+                                    avl.insert(Student(id, gpa, dep, name));
+                                    cout << "The student is added" << endl;
+                                    cout << "--------------------------------------" << endl;
+                                    
+                                }
+                            }
+                            else{
+                                cout << "--------------------------------------" << endl;
+                                cout << "Please enter gpa from 0 to 4 "<<endl;
+                                cout << "--------------------------------------" << endl;
+
+                            }
+                            
                         }
 
                     }
-                    
+                    else{
+                        cout << "--------------------------------------" << endl;
+                        cout << "Please enter id from 1 to 100" << endl;
+                        cout << "--------------------------------------" << endl;
+
+                    }
                     
 
                 }
@@ -202,15 +242,42 @@ int main(){
                     cout<<"id : "<<endl;
                     cin>>id;
                     cin.ignore();
-                    cout<<"Name : "<<endl;
-                    getline(cin, name);
-                    cout<<"GPA : "<<endl;
-                    cin>>gpa;
-                    cout<<"Department : "<<endl;
-                    cin>>dep;
-                    minH.Add(Student(id , gpa, dep , name));
-                    cout<<"--------------------------------------"<<endl;
+                    if(s.checkID(id)){
+                        cout<<"Name : "<<endl;
+                        getline(cin, name);
+                        cout<<"GPA : "<<endl;
+                        cin>>gpa;
+                        if(s.checkGPA(gpa)){
+                            cout<<"Department : "<<endl;
+                            cin>>dep;
+                            if(!s.checkDepartment(dep)){
+                                cout<<"--------------------------------------"<<endl;
+                                cout << "please enter department from the following in capital only:" << endl;
+                                cout << "CS , IS , DS , IT" << endl;
+                                cout << "--------------------------------------" << endl;
+                            }
+                            else{
+                            minH.Add(Student(id , gpa, dep , name));
+                            cout << "The student is added" << endl;
+                            cout << "--------------------------------------" << endl;
+                            }
+                        }
+                        else {
+                            cout << "--------------------------------------" << endl;
+                            cout << "Please enter gpa from 0 to 4 "<<endl;
+                            cout << "--------------------------------------" << endl;
 
+
+                        }
+                        
+                    }
+                    else{
+                        cout << "--------------------------------------" << endl;
+                        cout << "Please enter id from 1 to 100" << endl;
+                        cout << "--------------------------------------" << endl;
+
+
+                    }
                 }
 
                 else if (MinHeapChosen==2){
@@ -242,14 +309,44 @@ int main(){
                     cout<<"id : "<<endl;
                     cin>>id;
                     cin.ignore();
-                    cout<<"Name : "<<endl;
-                    getline(cin, name);
-                    cout<<"GPA : "<<endl;
-                    cin>>gpa;
-                    cout<<"Department : "<<endl;
-                    cin>>dep;
-                     maxH.Add(Student(id , gpa, dep , name));
-                    cout<<"--------------------------------------"<<endl;
+                    if(s.checkID(id)){
+                        cout<<"Name : "<<endl;
+                        getline(cin, name);
+                        cout<<"GPA : "<<endl;
+                        cin>>gpa;
+                        if(s.checkGPA(gpa)){
+                            cout<<"Department : "<<endl;
+                            cin>>dep;
+                            if(!s.checkDepartment(dep)){
+                                cout<<"--------------------------------------"<<endl;
+                                cout << "please enter department from the following in capital only:" << endl;
+                                cout << "CS , IS , DS , IT" << endl;
+                                cout << "--------------------------------------" << endl;
+                            }
+                            else{
+                            maxH.Add(Student(id , gpa, dep , name));
+                            cout << "The student is added" << endl;
+                            cout << "--------------------------------------" << endl;
+                            }
+                        }
+                        else {
+                            cout << "--------------------------------------" << endl;
+                            cout << "Please enter gpa from 0 to 4 "<<endl;
+                            cout << "--------------------------------------" << endl;
+
+
+                        }
+                        
+                    }
+                    else{
+                        cout << "--------------------------------------" << endl;
+                        cout << "Please enter id from 1 to 100" << endl;
+                        cout << "--------------------------------------" << endl;
+
+
+                    }
+
+                   
                 }
 
                 else if (MaxHeapChosen==2){
