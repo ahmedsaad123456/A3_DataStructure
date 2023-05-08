@@ -20,6 +20,10 @@ public:
     void Sort();
 
     void print();
+
+    void departmentReport();
+
+    bool checkRepeatedID(int id);
         
         
 };
