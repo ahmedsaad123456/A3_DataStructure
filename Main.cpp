@@ -11,9 +11,9 @@ int main(){
     string name ,dep;
     int chosen =0;
     Student s;
-    // MinHeap //minH; create object of MinHeap
-    // MaxHeap //maxH;  create object of MaxHeap
-    // BST b;   //create object of BST
+    MinHeap minH; //create object of MinHeap
+    MaxHeap maxH;  //create object of MaxHeap
+    BST b;   //create object of BST
     AVL avl; //create object of AVL
 
     while(chosen!=5){
@@ -42,29 +42,59 @@ int main(){
             
                 cin>>BSTchosen;
 
-                if(BSTchosen==1){
-                    cout<<"id : "<<endl;
-                    cin>>id;
+                if(BSTchosen == 1){
+                    cout << "id : " << endl;
+                    cin >> id;
                     cin.ignore();
-                    cout<<"Name : "<<endl;
+                    cout << "Name : " << endl;
                     getline(cin, name);
-                    cout<<"GPA : "<<endl;
-                    cin>>gpa;
-                    cout<<"Department : "<<endl;
-                    cin>>dep;
-                    // b.insert(Student(id , gpa , dep , name));
-                    cout<<"The student is added"<<endl;
-                    cout<<"--------------------------------------"<<endl;
+                    cout << "GPA : " << endl;
+                    cin >> gpa;
+                    cout << "Department : " << endl;
+                    cin >> dep;
+                    if(!s.checkDepartment(dep)){
+                        cout << "please enter department from the following:" << endl;
+                        cout << "CS , IS , DS , IT" << endl;
+                        cout << "--------------------------------------" << endl;
 
+                    }
+                    else {
+                        if(!b.searchStudent(id)) {
+                            b.addStudent(Student(id, gpa, dep, name));
+                            cout << "The student is added" << endl;
+                            cout << "--------------------------------------" << endl;
+                        }
+                    }
                 }
-                else if(BSTchosen==2){
-                    // remove student
+                else if(BSTchosen == 2){
+                    cout << "Enter student ID: " << endl;
+                    cin >> id;
+                    if(!b.searchStudent(id))
+                    {
+                        cout << "Student is not found" << endl;
+                        cout << "--------------------------------------" << endl;
+
+                    }
+                    else{
+                        b.removeStudent(id);
+                        cout << "Student is deleted" << endl;
+                        cout << "--------------------------------------" << endl;
+
+                    }
                 }
-                else if(BSTchosen==3){
-                    // search student
+                else if(BSTchosen == 3){
+                    cout << "Enter Student ID: " << endl;
+                    cin >> id;
+                    if(!b.searchStudent(id)){
+                        cout << "Student is not found" << endl;
+                        cout <<"--------------------------------------" << endl;
+
+                    }
+                    cout << "--------------------------------------" << endl;
                 }
-                else if (BSTchosen==4){
-                    // print all
+                else if (BSTchosen == 4){
+                    b.printAll(b.getRoot());
+                    cout << "--------------------------------------" << endl;
                 }
                 else if (BSTchosen!=5){
                     cout<<"please enter valid number from menu"<<endl;
