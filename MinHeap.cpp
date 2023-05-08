@@ -1,10 +1,9 @@
 #include "MinHeap.h"
 
-vector<Student> MinHeap::ReadFromFile(string filename ){
+void MinHeap::ReadFromFile(string filename ){
     
         fstream datafile;
         string line;
-        vector<Student> vec;
         int counter = 1;
         Student s;
         
@@ -25,7 +24,7 @@ vector<Student> MinHeap::ReadFromFile(string filename ){
             else {
                 s.setDepartment(line);
                 counter = 0;
-                vec.push_back(s);
+                Add(s);
             }
 
             counter++;
@@ -33,11 +32,10 @@ vector<Student> MinHeap::ReadFromFile(string filename ){
         }
 
         datafile.close();
-        return vec;
-    }
+}
 
 MinHeap::MinHeap(){
-    this->studentsVec = ReadFromFile("students.txt");
+    this->ReadFromFile("students.txt");
 }
 
 void MinHeap::Add( Student s){
@@ -101,4 +99,3 @@ void MinHeap::print(){
         studentsVec[i].print();
     }
 }
-
