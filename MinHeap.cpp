@@ -39,7 +39,15 @@ MinHeap::MinHeap(){
 }
 
 void MinHeap::Add( Student s){
-
+    
+    while(checkRepeatedID(s.getID())){
+            cout<<"Student with ID: "<<s.getID()<<" already exists"<<endl;
+            int id;
+            cout<<"Enter new ID: ";
+            cin>>id;
+            s.setID(id);
+            checkRepeatedID(s.getID());
+    }
     studentsVec.push_back(s);
 
     int index = studentsVec.size() - 1;
@@ -90,10 +98,53 @@ void MinHeap::Sort(){
 
 
 void MinHeap::print(){
-    cout<<"Print "+to_string(studentsVec.size())+" students"<<'\n';
+    cout<<endl;
+    cout<<"Print "+to_string(studentsVec.size())+" students"<<'\n'<<endl;
     Sort();
     
-    for(int i = studentsVec.size() - 1 ; i >= 0 ; i--){
+    for(int i = studentsVec.size() -1 ; i >= 0 ; i--){
         studentsVec[i].print();
     }
+    cout<<endl;
 }
+
+
+void MinHeap:: departmentReport(){
+    static int DS = 0, CS = 0, IS = 0, IT = 0;
+    
+   for(int i=studentsVec.size() -1;i>=0 ;i--){
+        if(studentsVec[i].getDepartment() == "CS")
+            CS++;
+        
+        else if(studentsVec[i].getDepartment() == "IS")
+            IS++;
+        
+        else if(studentsVec[i].getDepartment() == "DS")
+            DS++;
+        
+        else if(studentsVec[i].getDepartment() == "IT")
+            IT++;
+
+   }
+
+
+   cout << "--------------------------------------" << endl;
+        cout << "Students per department:" << endl<<endl;
+        cout << "CS " << CS << " students" << endl;
+        cout << "IT " << IT << " students" << endl;
+        cout << "DS " << DS << " students" << endl;
+        cout << "IS " << IS << " students" << endl<<endl;
+   
+
+}
+
+//--------------------------------------------------------------------------
+
+bool MinHeap:: checkRepeatedID(int id){
+    for(int i = 0; i < studentsVec.size(); i++){
+        if(studentsVec[i].getID() == id)
+            return true;
+    }
+    return false;
+}
+
