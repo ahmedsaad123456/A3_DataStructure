@@ -50,10 +50,10 @@ void MaxHeap:: Add( Student s){
 
     int index = studentsVec.size() - 1;
     
-    while(index > 0     &&    studentsVec[index].getGPA()  >  studentsVec[( index / 2 ) - 1].getGPA()) {
+    while(index > 0     &&    studentsVec[index].getGPA()  >  studentsVec[( index - 1 ) / 2 ].getGPA()) {
         
-        swap(studentsVec[(index / 2) - 1], studentsVec[index]);
-        index = (index / 2) - 1 ;
+        swap(studentsVec[( index - 1 ) / 2], studentsVec[index]);
+        index = ( index - 1 ) / 2;
     }
 
     cout<<"The Student is added"<<'\n';
