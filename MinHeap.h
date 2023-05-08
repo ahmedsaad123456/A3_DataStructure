@@ -70,11 +70,11 @@ public:
         int l = 2 * i + 1;
         int r = 2 * i + 2;
         
-        if(l < n && studentsVec[l].getGPA() > studentsVec[largest].getGPA()){
+        if(l < n && studentsVec[l].getGPA() < studentsVec[largest].getGPA()){
             largest = l;
         }
         
-        if(r < n && studentsVec[r].getGPA() > studentsVec[largest].getGPA()){
+        if(r < n && studentsVec[r].getGPA() < studentsVec[largest].getGPA()){
             largest = r;
         }
         
