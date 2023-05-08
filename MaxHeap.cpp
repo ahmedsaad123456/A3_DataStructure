@@ -87,7 +87,7 @@ void MaxHeap :: heapify(vector<Student>& vec, int n, int i){
 vector<Student>& MaxHeap::Sort(vector<Student>& stVec){
 
     int n = stVec.size();
-    for(int i = n / 2 - 1; i >= 0; i--){
+    for(int i =(n - 1) / 2; i >= 0; i--){
         heapify(stVec, n, i);
     }
     
