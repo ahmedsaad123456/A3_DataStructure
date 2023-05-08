@@ -56,7 +56,7 @@ void MinHeap::Add( Student s){
 }
 
 
-void MinHeap::heapify(vector<Student>& vec, int n, int i){
+void MinHeap::heapify(vector<Student>& studentsVec, int n, int i){
     
     int largest = i;
     int l = 2 * i + 1;
@@ -71,25 +71,25 @@ void MinHeap::heapify(vector<Student>& vec, int n, int i){
     }
     
     if(largest != i){
-        swap(vec[i], vec[largest]);
-        heapify(vec, n, largest);
+        swap(studentsVec[i], studentsVec[largest]);
+        heapify(studentsVec, n, largest);
     }
 }
 
 
-vector<Student>& MinHeap::Sort(vector<Student>& stVec){
+vector<Student>& MinHeap::Sort(vector<Student>& studentsVec){
     
-    int n = stVec.size();
+    int n = studentsVec.size();
     for(int i = (n - 1) / 2; i >= 0; i--){
-        heapify(stVec, n, i);
+        heapify(studentsVec, n, i);
     }
     
     for(int i = n - 1; i >= 0; i--){
-        swap(stVec[0], stVec[i]);
-        heapify(stVec, i, 0);
+        swap(studentsVec[0], studentsVec[i]);
+        heapify(studentsVec, i, 0);
     }
     
-    return stVec;
+    return studentsVec;
 }
 
 
