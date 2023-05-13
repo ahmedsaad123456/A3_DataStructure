@@ -106,11 +106,12 @@ void MinHeap::print(){
         studentsVec[i].print();
     }
     cout<<endl;
+    departmentReport();
 }
 
 
 void MinHeap:: departmentReport(){
-    static int DS = 0, CS = 0, IS = 0, IT = 0;
+    int DS = 0, CS = 0, IS = 0, IT = 0;
     
    for(int i=studentsVec.size() -1;i>=0 ;i--){
         if(studentsVec[i].getDepartment() == "CS")
