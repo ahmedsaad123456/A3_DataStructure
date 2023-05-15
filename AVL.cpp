@@ -52,6 +52,8 @@ node* AVL::insert(Student s, node *current){
     if(current==NULL){
         return new node(s);
     }
+
+    // get the correct position of the inserted node 
     
     if(s.getID()< current->student.getID()){
         current->left = insert(s, current->left);
@@ -60,30 +62,35 @@ node* AVL::insert(Student s, node *current){
         current->right = insert(s, current->right);
     }
     
+    // update the height
     current->height = max(getHeight(current->left) , getHeight(current->right))+1;
 
     int balance = get_balance_factor(current);
 
     // left left 
+    // the second condition is to ensure that the new node is in left left of the current node
     if(balance>1 && s.getID() < current->left->student.getID()){
         return rightRotate(current);
     }
 
     // right right
+    // the second condition is to ensure that the new node is in right right of the current node
     if(balance < -1 && s.getID() > current->right->student.getID()){
         return leftRotate(current);
     }
 
     // left right
+    // the second condition is to ensure that the new node is in left right of the current node
     if(balance > 1 && s.getID() > current->left->student.getID()){
-        current->left = leftRotate(current->left);
-        return rightRotate(current);
+        current->left = leftRotate(current->left); // left rotation in the left of the current node
+        return rightRotate(current); // then right rotation in the current node
     }
 
     // right left
+    // the second condition is to ensure that the new node is in right left of the current node
     if(balance <-1 && s.getID() < current->right->student.getID()){
-        current->right = rightRotate(current->right);
-        return leftRotate(current);
+        current->right = rightRotate(current->right);   // right rotation in the right of the current node
+        return leftRotate(current);      // then left rotation in the current node
     }
 
 
@@ -128,19 +135,14 @@ node* AVL::erase(int id , node* current){
         current->right = erase(id , current->right);
     }
     else{
-        // leaf node
-        if(current->left ==NULL && current->right ==NULL){
-            delete current;
-            current = NULL;
-        }
-        // node has child in right
-        else if(current->left==NULL){
+        // node has child in right or has no child
+        if(current->left==NULL){
             node* temp = current;
             current  = current->right;
             delete temp;
         }
 
-        // node has child in left
+        // node has child in left or has no child
         else if (current->right==NULL){
             node* temp = current;
             current = current->left;
@@ -148,39 +150,52 @@ node* AVL::erase(int id , node* current){
         }
         // node has two child
         else{
+            // get the minimum node of the right subtree 
             node* temp  = getSuccessor(current->right);
+            // put it in the current node 
             current->student = temp->student;
+            // delete the temp node
             current->right = erase(temp->student.getID() , current->right);
         }
         if(current==NULL ){
             return NULL;
         }
-        // update height
-        current->height =  max(getHeight(current->left), getHeight(current->right)) +1;
-        int balance = get_balance_factor(current);
-
-        if (balance > 1 && get_balance_factor(current->left) >= 0) {
-            return rightRotate(current);
-        }
-        if (balance > 1 && get_balance_factor(current->left) < 0) {
-            current->left = leftRotate(current->left);
-            return rightRotate(current);
-        }
-        if (balance < -1 && get_balance_factor(current->right) <= 0) {
-            return leftRotate(current);
-        }
-        if (balance < -1 && get_balance_factor(current->right) > 0) {
-            current->right = rightRotate(current->right);
-            return leftRotate(current);
-        }
-
-
-        
     }
+    // update height
+    current->height =  max(getHeight(current->left), getHeight(current->right)) +1;
+    int balance = get_balance_factor(current);
+    // the first condition that is to ensure that the tree is unbalanced 
+    // left left
+    if (balance > 1 && get_balance_factor(current->left) >= 0) {
+        return rightRotate(current);
+    }
+    // the first condition that is to ensure that the tree is unbalanced 
+    // left right
+    if (balance > 1 && get_balance_factor(current->left) < 0) {
+        current->left = leftRotate(current->left);
+        return rightRotate(current);
+    }
+    // the first condition that is to ensure that the tree is unbalanced 
+    // the second condition that is to ensure that the right subtree of the right child node has height greater than the left subtree of the right child node
+    // that mean we will apply the left rotation in the current node 
+    // right right
+    if (balance < -1 && get_balance_factor(current->right) <= 0) {
+        return leftRotate(current);
+    }
+    // the first condition that is to ensure that the tree is unbalanced
+    // right left 
+
+    if (balance < -1 && get_balance_factor(current->right) > 0) {
+        current->right = rightRotate(current->right);
+        return leftRotate(current);
+    }
+
 
     return current;
     
 }
+
+    
 
 bool AVL::search(int id) {
     node * current = root;
